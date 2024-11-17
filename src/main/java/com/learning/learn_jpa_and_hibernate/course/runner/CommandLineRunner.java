@@ -33,18 +33,24 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
         jpaRepo.insert(new Course(9, "Learn Economics", "Limps"));
         jpaRepo.insert(new Course(10, "Learn Yoga", "Arts"));
 
-        System.out.println(jpaRepo.findById(8));
-        System.out.println(jpaRepo.findById(9));
-        System.out.println(jpaRepo.findById(10));
+        System.out.println("Find By id 8: \n" + jpaRepo.findById(8));
+        System.out.println("Find By id 9: \n" + jpaRepo.findById(9));
+        System.out.println("Find By id 10: \n" + jpaRepo.findById(10));
 
         dataJpaRepo.save(new Course(11, "Learn COMSI", "Udemy"));
         dataJpaRepo.save(new Course(12, "Learn Ethical Hacking", "UJ"));
         dataJpaRepo.save(new Course(13, "Learn UnEthical Hacking", "CPT"));
         dataJpaRepo.save(new Course(14, "Learn Mechanics", "UCT"));
 
-        System.out.println(dataJpaRepo.findById(8l));
-        System.out.println(dataJpaRepo.findById(9l));
-        System.out.println(dataJpaRepo.findById(10l));
+        System.out.println("Find By id 8: \n" + dataJpaRepo.findById(8l));
+        System.out.println("Find By id 9: \n" +dataJpaRepo.findById(9l));
+        System.out.println("Find By id 10: \n" +dataJpaRepo.findById(10l));
+
+        System.out.println("Find By All: \n" +dataJpaRepo.findAll());
+        System.out.println("Counts :"+ dataJpaRepo.count());
+        System.out.println("Find By Aurthor: \n" + dataJpaRepo.findByAuthor("UJ"));
+        System.out.println("Find By Course Name: \n" + dataJpaRepo.findByName("Learn COMSI"));
+
 
     }
 }
