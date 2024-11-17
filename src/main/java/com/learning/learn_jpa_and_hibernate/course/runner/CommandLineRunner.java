@@ -3,6 +3,7 @@ package com.learning.learn_jpa_and_hibernate.course.runner;
 import com.learning.learn_jpa_and_hibernate.course.business.Course;
 import com.learning.learn_jpa_and_hibernate.course.jdbc.repository.CourseJdbcRepo;
 import com.learning.learn_jpa_and_hibernate.course.jpa.repository.CourseJpaRepo;
+import com.learning.learn_jpa_and_hibernate.course.springdatajpa.repository.CourseSpringDataJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,9 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
 
     @Autowired
     private CourseJpaRepo jpaRepo;
+
+    @Autowired
+    private CourseSpringDataJpaRepo dataJpaRepo;
 
     @Override
     public void run(String... args) throws Exception {
@@ -32,6 +36,15 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
         System.out.println(jpaRepo.findById(8));
         System.out.println(jpaRepo.findById(9));
         System.out.println(jpaRepo.findById(10));
+
+        dataJpaRepo.save(new Course(11, "Learn COMSI", "Udemy"));
+        dataJpaRepo.save(new Course(12, "Learn Ethical Hacking", "UJ"));
+        dataJpaRepo.save(new Course(13, "Learn UnEthical Hacking", "CPT"));
+        dataJpaRepo.save(new Course(14, "Learn Mechanics", "UCT"));
+
+        System.out.println(dataJpaRepo.findById(8l));
+        System.out.println(dataJpaRepo.findById(9l));
+        System.out.println(dataJpaRepo.findById(10l));
 
     }
 }
